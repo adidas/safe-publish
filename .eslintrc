@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "adidas-env/node",
+    "adidas-es9"
+  ]
+}
