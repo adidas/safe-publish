@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+.npmrc
+.sonar
+.vscode
+*.code-*
+*.log
+*.orig
+node_modules
