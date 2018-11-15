@@ -37,6 +37,14 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-promise": "4.0.1"
   },
+  "files": [
+    "bin",
+    "lib",
+    "publish.js",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "npm",
     "publish"
