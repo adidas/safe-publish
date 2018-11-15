@@ -16,6 +16,12 @@
     "url": "https://github.com/adidas/safe-publish/issues"
   },
   "main": "publish.js",
+  "scripts": {
+    "lint": "eslint {*,**/*}.js "
+  },
+  "bin": {
+    "safe-publish": "bin/cli.js"
+  },
   "engines": {
     "node": ">= 8",
     "npm": ">= 5"
