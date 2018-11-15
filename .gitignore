@@ -7,3 +7,4 @@
 *.log
 *.orig
 node_modules
+packages/**/LICENSE
