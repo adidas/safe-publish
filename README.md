@@ -50,6 +50,7 @@ These values are optional and allow to configure the publication:
     "registry": "http://registry.url"
   }
   ```
+- `tag` (string): publish the package with a dist-tag  (see [npm-dist-tag](https://docs.npmjs.com/cli/dist-tag) ).
 - `force` (boolean): force the publication despite the fact that the package could exist.
   - It implies that the process could fail.
 - `dry-run` (boolean): for testing purposes, it does not try to publish the package.
@@ -70,6 +71,7 @@ Options and aliases:
   --version       Show version number                                  [boolean]
   --help          Show help                                            [boolean]
   -r, --registry  Override default registry                             [string]
+  -t, --tag       Publish with dist-tag                                 [string]
   -f, --force     Force publication                   [boolean] [default: false]
   -d, --dry-run   Test publication process            [boolean] [default: false]
   -s, --silent    Disable log output                  [boolean] [default: false]
