@@ -30,7 +30,7 @@ publish({
 .catch((error) => {
   const log = logger.create({ silent });
 
-  log.error(`Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${tag && 'with tag ' + bold(red(tag)) || ''}`);
+  log.error(`Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${ tag ? `with tag ${ bold(red(tag)) }` : '' }`);
   log.error(error);
 
   process.exit(-1);

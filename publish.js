@@ -44,15 +44,14 @@ function find({ cwd, name, version, registry }) {
  * @param {number} code - Status code of the package (existing/new).
  * @returns {Promise<number>} Status code of the package (existing/new).
  */
-function publish({ cwd, registry, tag, public, dryRun, code }) {
+function publish({ cwd, registry, tag, dryRun, code }) {
   const args = [];
 
-  tag && args.push(`--tag ${tag}`)
+  tag && args.push(`--tag ${ tag }`);
   registry && args.push(`--registry ${ registry }`);
   dryRun && args.push('--dry-run');
-console.log(`npm publish ${ args.join(' ') }`)
-  return exec(`npm publish ${ args.join(' ') }`, { cwd })
-    .then(() => code);
+
+  return exec(`npm publish ${ args.join(' ') }`, { cwd }).then(() => code);
 }
 
 module.exports = function({ cwd, name, version, registry, tag, force, dryRun, silent }) {
@@ -62,28 +61,38 @@ module.exports = function({ cwd, name, version, registry, tag, force, dryRun, si
     .then((code) => {
       if (!force && code === resultCode.SAME_VERSION) {
         log.info(`Package ${ bold(name) } is up-to-date, no more action required`);
-
         process.exit(resultCode.SAME_VERSION);
       }
 
       return code;
     })
-    .then((code) => publish({
-      code,
-      cwd,
-      registry,
-      tag,
-      dryRun
-    }))
+    .then((code) =>
+      publish({
+        code,
+        cwd,
+        registry,
+        tag,
+        dryRun
+      }))
     .then((code) => {
       if (code === resultCode.NEW_VERSION) {
-        log.info(`Package ${ bold(blue(name)) } has been updated to v${ bold(blue(version)) } ${tag && 'with tag' + bold(green(tag)) || ''}`);
+        log.info(
+          `Package ${ bold(blue(name)) } has been updated to v${ bold(blue(version)) } ${ (tag &&
+            `with tag${ bold(green(tag)) }`) ||
+            '' }`
+        );
       } else {
-        log.info(`Package ${ bold(green(name)) } has been created with v${ bold(green(version)) } ${tag && 'with tag' + bold(green(tag)) || ''}`);
+        log.info(
+          `Package ${ bold(green(name)) } has been created with v${ bold(green(version)) } ${ (tag &&
+            `with tag${ bold(green(tag)) }`) ||
+            '' }`
+        );
       }
     })
     .catch((error) => {
-      log.error(`Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${tag && 'with tag' + bold(red(tag)) || ''} `);
+      log.error(
+        `Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${ (tag && `with tag${ bold(red(tag)) }`) || '' } `
+      );
       log.error(error);
 
       process.exit(resultCode.ERROR);
