@@ -8,7 +8,7 @@ const logger = require('../lib/logger');
 
 const { argv: { registry, tag, force, dryRun, silent } } = yargs
   .string('registry').alias('r', 'registry').describe('registry', 'Override default registry')
-  .string('tag').alias('t', 'tag').describe('tag', 'Publish with "--tag <TAG>"')
+  .string('tag').alias('t', 'tag').describe('tag', 'Publish with dist-tag')
   .boolean('force').alias('f', 'force').default('force', false).describe('force', 'Force publication')
   .boolean('dry-run').alias('d', 'dry-run').default('dry-run', false).describe('dry-run', 'Test publication process')
   .boolean('silent').alias('s', 'silent').default('silent', false).describe('silent', 'Disable log output')
@@ -30,7 +30,10 @@ publish({
 .catch((error) => {
   const log = logger.create({ silent });
 
-  log.error(`Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${ tag ? `with tag ${ bold(red(tag)) }` : '' }`);
+  log.error(
+    `Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${
+      tag ? `with tag ${ bold(red(tag)) }` : '' }`
+  );
   log.error(error);
 
   process.exit(-1);

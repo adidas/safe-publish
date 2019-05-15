@@ -50,7 +50,8 @@ These values are optional and allow to configure the publication:
     "registry": "http://registry.url"
   }
   ```
-- `tag` (string): publish the package with a dist-tag  (see [npm-dist-tag](https://docs.npmjs.com/cli/dist-tag) ).
+- `tag` (string): publish the package with a dist-tag.
+  - See [npm-dist-tag](https://docs.npmjs.com/cli/dist-tag).
 - `force` (boolean): force the publication despite the fact that the package could exist.
   - It implies that the process could fail.
 - `dry-run` (boolean): for testing purposes, it does not try to publish the package.

@@ -78,20 +78,21 @@ module.exports = function({ cwd, name, version, registry, tag, force, dryRun, si
       if (code === resultCode.NEW_VERSION) {
         log.info(
           `Package ${ bold(blue(name)) } has been updated to v${ bold(blue(version)) } ${
-            tag ? `with tag${ bold(green(tag)) }` : ''
+            tag ? `with tag ${ bold(green(tag)) }` : ''
           }`
         );
       } else {
         log.info(
           `Package ${ bold(green(name)) } has been created with v${ bold(green(version)) } ${
-            tag ? `with tag${ bold(green(tag)) }` : ''
+            tag ? `with tag ${ bold(green(tag)) }` : ''
           }`
         );
       }
     })
     .catch((error) => {
       log.error(
-        `Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${ tag ? `with tag${ bold(red(tag)) }` : '' } `
+        `Error publishing ${ bold(red(name)) } to v${ bold(red(version)) } ${
+          tag ? `with tag ${ bold(red(tag)) }` : '' } `
       );
       log.error(error);
 
