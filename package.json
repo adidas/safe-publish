@@ -1,6 +1,6 @@
 {
   "name": "safe-publish",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Safe NPM package publication",
   "license": "MIT",
   "homepage": "https://github.com/adidas/safe-publish#readme",
