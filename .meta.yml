@@ -1,0 +1,12 @@
+maintainers:
+- David.Recuenco@adidas-group.com
+- Jaime.Pastor@adidas-group.com
+category: library
+summary: 'Safe NPM package publication'
+links:
+- name: Repository
+  url: https://github.com/adidas/safe-publish
+keywords:
+- publish
+- npm
+- lerna
