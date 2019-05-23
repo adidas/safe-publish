@@ -1,3 +1,8 @@
+## 1.1.2
+
+- Updated package-lock file.
+- Updated ESLint dependencies.
+
 ## 1.1.1
 
 - Fixed `--dry-run` documentation.
