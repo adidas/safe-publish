@@ -1,3 +1,7 @@
+# 1.2.0
+
+- Added control to skip `private` packages from being published.
+
 ## 1.1.2
 
 - Updated package-lock file.
