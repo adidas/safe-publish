@@ -7,6 +7,7 @@ const exec = promisify(childProcess.exec);
 const resultCode = {
   ERROR: -1,
   SAME_VERSION: 0,
+  PRIVATE_PACKAGE: 0,
   NEW_VERSION: 1,
   NEW_PACKAGE: 2
 };
@@ -54,13 +55,20 @@ function publish({ cwd, registry, tag, dryRun, code }) {
   return exec(`npm publish ${ args.join(' ') }`, { cwd }).then(() => code);
 }
 
-module.exports = function({ cwd, name, version, registry, tag, force, dryRun, silent }) {
+module.exports = function({ cwd, name, version, privatePackage, registry, tag, force, dryRun, silent }) {
   const log = logger.create({ silent });
+
+  if (privatePackage) {
+    log.info(`Package ${ bold(name) } is private, skipped publication`);
+
+    process.exit(resultCode.PRIVATE_PACKAGE);
+  }
 
   return find({ cwd, name, version, registry })
     .then((code) => {
       if (!force && code === resultCode.SAME_VERSION) {
         log.info(`Package ${ bold(name) } is up-to-date, no more action required`);
+
         process.exit(resultCode.SAME_VERSION);
       }
 

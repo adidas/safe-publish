@@ -15,12 +15,13 @@ const { argv: { registry, tag, force, dryRun, silent } } = yargs
   .help('help');
 
 const cwd = process.cwd();
-const { name, version } = require(join(cwd, 'package.json'));
+const { name, version, private: privatePackage = false } = require(join(cwd, 'package.json'));
 
 publish({
   cwd,
   name,
   version,
+  privatePackage,
   registry,
   tag,
   force,
